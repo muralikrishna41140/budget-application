@@ -60,7 +60,7 @@ const Landing = () => {
               </Button>
             </Link>
             <Link to="/signup">
-              <Button className="animate-pulse-gentle">Get Start</Button>
+              <Button className="animate-pulse-gentle">Get Started</Button>
             </Link>
           </div>
         </div>
