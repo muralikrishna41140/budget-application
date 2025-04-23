@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background and Foreground */
+    --background: 221 83% 53%; /* Main blue from the image */
+    --foreground: 0 0% 100%; /* White text for contrast */
+
+    /* Card and Popover */
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 221 83% 53%; /* Blue text on cards */
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 83% 53%;
+
+    /* Primary Colors */
+    --primary: 221 83% 53%; /* Vibrant blue from the image */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+
+    /* Secondary Colors */
+    --secondary: 221 83% 96%; /* Very light blue */
+    --secondary-foreground: 221 83% 53%; /* Blue text for secondary elements */
+
+    /* Muted Colors */
+    --muted: 221 83% 98%; /* Extremely light blue */
+    --muted-foreground: 221 70% 60%; /* Softer blue for muted text */
+
+    /* Accent Colors */
+    --accent: 221 83% 53%; /* Same as primary for consistency */
+    --accent-foreground: 0 0% 100%; /* White accent text */
+
+    /* Destructive Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and Input */
+    --border: 221 83% 90%; /* Light blue border */
+    --input: 221 83% 90%;
+    --ring: 221 83% 53%;
+
+    /* Radius */
+    --radius: 0.75rem;
+
+    /* Sidebar Colors */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 221 83% 40%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 221 83% 97%;
+    --sidebar-accent-foreground: 221 83% 53%;
+    --sidebar-border: 221 83% 90%;
+    --sidebar-ring: 221 83% 53%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 221 83% 53%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 224 76% 48%;
+
+    --sidebar-background: 222 47% 14%; 
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 224 76% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border transition-colors duration-200;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-semibold;
+  }
+
+  /* Smooth scrolling */
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/60 dark:bg-card/60 backdrop-blur-lg border border-white/20 
+           dark:border-gray-800/30 rounded-xl shadow-glass 
+           transition-all duration-300 hover:shadow-glass-hover;
+  }
+  
+  .neo-card {
+    @apply bg-white dark:bg-card border-2 border-finance-navy dark:border-gray-600 
+           rounded-lg shadow-neo transition-all duration-300
+           hover:translate-y-[-2px];
+  }
+  
+  .stat-card {
+    @apply glass-card p-5 flex flex-col justify-between;
+  }
+
+  .insights-card {
+    @apply glass-card p-5 mb-4;
+  }
+  
+  .chart-container {
+    @apply glass-card p-4 h-full;
+  }
+  
+  .section-title {
+    @apply text-lg font-semibold mb-4 flex items-center gap-2;
+  }
+
+  /* New animation classes */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-in-right {
+    @apply animate-slide-in-right;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .button-hover {
+    @apply transition-all duration-200 hover:brightness-110 active:scale-95;
+  }
+}
+
+/* Define gradient utilities directly */
+@layer utilities {
+  .interactive-gradient {
+    @apply bg-gradient-to-r from-finance-teal to-finance-navy;
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    transition: all 0.5s;
+  }
+  
+  .interactive-gradient:hover {
+    background-position: 100% 0%;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Extended background utilities */
+.bg-size-200 {
+  background-size: 200% 100%;
+}
+
+.bg-pos-0 {
+  background-position: 0% 0%;
+}
+
+.bg-pos-100 {
+  background-position: 100% 0%;
+}
+
+/* Enhanced loading animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.2) 25%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .animate-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(30,41,59,0) 0%, 
+    rgba(30,41,59,0.3) 25%, 
+    rgba(30,41,59,0.3) 50%, 
+    rgba(30,41,59,0) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Parallax effect for sections */
+.parallax-slow {
+  transform: translateZ(-10px) scale(2);
+}
+
+.parallax-medium {
+  transform: translateZ(-5px) scale(1.5);
+}
+
+.parallax-fast {
+  transform: translateZ(0);
+}
